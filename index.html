@@ -4,157 +4,229 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
-  <title>Juhyun Moon</title>
-  <meta name="description" content="Juhyun Moon — Backend Engineer (Design · Build · Deploy · Operate)" />
+  <title>Juhyun Moon | Backend Engineer</title>
+  <meta name="description" content="Juhyun Moon — Backend 중심으로 설계·구현·배포·운영까지 경험한 개발자 포트폴리오" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Juhyun Moon | Backend Engineer" />
+  <meta property="og:description" content="Backend 중심으로 설계·구현·배포·운영까지 경험한 개발자 포트폴리오" />
+  <meta property="og:type" content="website" />
 
   <style>
     :root{
-      --bg: #ffffff;
-      --text: #111827;
-      --muted: #6b7280;
-      --line: #e5e7eb;
-      --card: #ffffff;
-      --max: 920px;
-      --radius: 12px;
+      --bg: #0b0c10;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.04);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --border: rgba(255,255,255,.12);
+      --accent: #7c9cff;
+      --accent2:#64ffd5;
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 980px;
     }
-    @media (prefers-color-scheme: dark){
+    @media (prefers-color-scheme: light){
       :root{
-        --bg: #0b0f14;
-        --text: #e5e7eb;
-        --muted: #9ca3af;
-        --line: #1f2937;
-        --card: #0b0f14;
+        --bg: #f7f8fb;
+        --panel: rgba(10,18,30,.06);
+        --panel2: rgba(10,18,30,.04);
+        --text: rgba(10,18,30,.92);
+        --muted: rgba(10,18,30,.70);
+        --border: rgba(10,18,30,.12);
+        --shadow: 0 18px 50px rgba(10,18,30,.12);
       }
     }
 
     *{ box-sizing:border-box; }
+    html,body{ height:100%; }
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
-                   "Apple SD Gothic Neo","Noto Sans KR", Arial, "Helvetica Neue", sans-serif;
-      background: var(--bg);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Apple SD Gothic Neo", "Noto Sans KR", Arial, "Helvetica Neue", sans-serif;
+      background:
+        radial-gradient(1200px 700px at 10% -10%, rgba(124,156,255,.22), transparent 60%),
+        radial-gradient(900px 600px at 90% 10%, rgba(100,255,213,.16), transparent 55%),
+        radial-gradient(800px 500px at 50% 110%, rgba(124,156,255,.12), transparent 55%),
+        var(--bg);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.65;
     }
 
-    a{ color: inherit; text-decoration: none; }
+    a{ color: inherit; text-decoration:none; }
     a:hover{ text-decoration: underline; }
 
     .wrap{
       max-width: var(--max);
       margin: 0 auto;
-      padding: 40px 18px 64px;
+      padding: 36px 18px 64px;
     }
 
     header{
       display:flex;
       gap: 18px;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
       flex-wrap: wrap;
-      padding-bottom: 22px;
-      border-bottom: 1px solid var(--line);
+      padding: 22px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, var(--panel), var(--panel2));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
     }
 
-    .who{
+    .hero{
       display:flex;
       gap: 14px;
       align-items: center;
-      min-width: 260px;
+      min-width: 280px;
     }
 
     .avatar{
-      width: 56px;
-      height: 56px;
+      width: 54px; height:54px;
       border-radius: 14px;
-      object-fit: cover;
-      border: 1px solid var(--line);
-      background: #f3f4f6;
+      background:
+        radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,.55), transparent 60%),
+        linear-gradient(135deg, rgba(124,156,255,.95), rgba(100,255,213,.75));
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      border: 1px solid rgba(255,255,255,.18);
+      flex: 0 0 auto;
     }
 
-    .name{
-      display:flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .name h1{
+    .title h1{
       margin:0;
-      font-size: 22px;
-      letter-spacing: -0.2px;
+      font-size: 26px;
+      letter-spacing: -0.3px;
     }
-    .name p{
-      margin:0;
+    .title p{
+      margin: 4px 0 0;
       color: var(--muted);
       font-size: 14px;
     }
 
     nav{
       display:flex;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
       align-items: center;
-      color: var(--muted);
+      justify-content: flex-end;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      border-radius: 999px;
       font-size: 13px;
+      color: var(--muted);
+      white-space: nowrap;
     }
-    nav a{ color: var(--muted); }
-    nav a:hover{ color: var(--text); text-decoration: underline; }
+    .chip strong{ color: var(--text); font-weight: 650; }
 
-    .section{
-      padding: 26px 0;
-      border-bottom: 1px solid var(--line);
+    .grid{
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
     }
-    .section:last-of-type{
-      border-bottom: none;
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
     }
 
-    h2{
+    .card{
+      padding: 18px 18px 16px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, var(--panel), var(--panel2));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .card h2{
       margin:0 0 10px;
       font-size: 16px;
-      letter-spacing: -0.2px;
+      letter-spacing: -.2px;
     }
-
-    ul{
-      margin: 10px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    li{ margin: 6px 0; }
-
-    .meta{
-      color: var(--muted);
-      font-size: 14px;
+    .card p{
       margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .list{
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none;
+      display:grid;
+      gap: 8px;
+    }
+    .list li{
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .dot{
+      width: 8px; height:8px;
+      margin-top: 8px;
+      border-radius: 99px;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 3px rgba(124,156,255,.12);
+      flex: 0 0 auto;
     }
 
-    .stack{
+    .badges{
       display:flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-top: 10px;
     }
-    .tag{
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 6px 10px;
+    .badge{
       font-size: 12px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
       color: var(--muted);
-      background: transparent;
+    }
+
+    .kpi{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .kpi .box{
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(255,255,255,.035);
+    }
+    .kpi .num{
+      font-weight: 750;
+      font-size: 16px;
+      letter-spacing: -.2px;
+    }
+    .kpi .lbl{
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 2px;
     }
 
     .projects{
       display:grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      margin-top: 12px;
+      gap: 10px;
+      margin-top: 10px;
     }
     .project{
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 14px;
-      background: var(--card);
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(255,255,255,.035);
     }
-    .project-top{
+    .project .top{
       display:flex;
       gap: 10px;
       align-items: baseline;
@@ -166,163 +238,157 @@
       font-size: 14px;
     }
     .project a{
-      font-size: 13px;
       color: var(--muted);
+      font-size: 13px;
     }
     .project p{
-      margin: 8px 0 0;
+      margin: 6px 0 0;
       color: var(--muted);
       font-size: 13px;
-    }
-
-    .thumb{
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      border: 1px solid var(--line);
-      margin-top: 10px;
-      display:block;
-    }
-
-    .contact{
-      display:grid;
-      gap: 8px;
-      margin-top: 10px;
-      font-size: 14px;
-      color: var(--muted);
     }
 
     footer{
-      margin-top: 22px;
+      margin-top: 14px;
       color: var(--muted);
       font-size: 12px;
+      text-align: center;
+      opacity: .85;
     }
 
-    .anchor{ scroll-margin-top: 16px; }
-    .small{ font-size: 12px; color: var(--muted); }
+    .anchor{
+      scroll-margin-top: 16px;
+    }
   </style>
 </head>
 
 <body>
   <div class="wrap">
     <header>
-      <div class="who">
-        <!-- 프로필 이미지: repo/assets/profile.jpg -->
-        <img class="avatar" src="assets/profile.jpg" alt="Juhyun Moon" />
-        <div class="name">
+      <div class="hero">
+        <div class="avatar" aria-hidden="true"></div>
+        <div class="title">
           <h1>Juhyun Moon</h1>
           <p>Backend Engineer · 설계 → 구현 → 배포 → 운영</p>
         </div>
       </div>
 
-      <nav aria-label="sections">
-        <a href="#about">About</a>
-        <a href="#stack">Tech</a>
-        <a href="#ops">Ops</a>
-        <a href="#lab">Lab</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+      <nav aria-label="quick links">
+        <a class="chip" href="#about"><strong>About</strong></a>
+        <a class="chip" href="#stack"><strong>Tech</strong></a>
+        <a class="chip" href="#ops"><strong>Ops</strong></a>
+        <a class="chip" href="#lab"><strong>Lab</strong></a>
+        <a class="chip" href="#projects"><strong>Projects</strong></a>
+        <a class="chip" href="#contact"><strong>Contact</strong></a>
       </nav>
+
+      <div class="kpi" role="group" aria-label="highlights">
+        <div class="box">
+          <div class="num">60,000+ users</div>
+          <div class="lbl">운영/장애 대응 경험</div>
+        </div>
+        <div class="box">
+          <div class="num">RHEL · Enterprise</div>
+          <div class="lbl">프로덕션 환경 운용</div>
+        </div>
+      </div>
     </header>
 
-    <section id="about" class="section anchor">
-      <h2>About</h2>
-      <ul>
-        <li>백엔드 개발을 주력으로 하며, 프론트엔드를 포함한 서비스 구현과 운영을 경험함</li>
-        <li>Spring Boot, DB, Docker, Kubernetes 환경에서 <strong>설계 → 구현 → 배포 → 운영</strong> 전반을 다뤄봄</li>
-        <li><strong>6만 명 이상 사용자가 사용하는 시스템</strong>의 서비스 배포, 운영, 장애 대응 경험 보유</li>
-        <li>서버 및 <strong>네트워크 단 설정(방화벽 등)</strong> 포함, 운영 환경 이슈 점검 및 대응 경험</li>
-        <li>설계 의도를 설명할 수 있는 구조를 지향하며 OS/Network/DB 기본기를 중심으로 학습 중</li>
+    <section id="about" class="card anchor" style="margin-top:14px;">
+      <h2>🧭 About Me</h2>
+      <ul class="list">
+        <li><span class="dot"></span><span>백엔드 개발을 주력으로 하며, 프론트엔드를 포함한 서비스 구현과 운영을 경험함</span></li>
+        <li><span class="dot"></span><span>Spring Boot, DB, Docker, Kubernetes 환경에서 <strong>설계 → 구현 → 배포 → 운영</strong> 전반을 다뤄봄</span></li>
+        <li><span class="dot"></span><span><strong>6만 명 이상 사용자가 사용하는 시스템</strong>의 서비스 배포, 운영, 장애 대응 경험 보유</span></li>
+        <li><span class="dot"></span><span>서버 및 <strong>네트워크 단 설정(방화벽 등)</strong>을 포함해, 운영 환경 이슈를 점검하고 대응해봄</span></li>
+        <li><span class="dot"></span><span>설계 의도를 설명할 수 있는 구조를 지향하며, OS/Network/DB 기본기를 중심으로 학습 중</span></li>
       </ul>
     </section>
 
-    <section id="stack" class="section anchor">
-      <h2>Tech Stack</h2>
-      <div class="stack" role="list">
-        <span class="tag">Java</span>
-        <span class="tag">Spring Boot</span>
-        <span class="tag">JPA</span>
-        <span class="tag">Oracle</span>
-        <span class="tag">MariaDB / MySQL</span>
-        <span class="tag">Docker</span>
-        <span class="tag">Docker Compose</span>
-        <span class="tag">Kubernetes (k3s)</span>
-        <span class="tag">GitHub Actions</span>
-        <span class="tag">React</span>
-        <span class="tag">TypeScript</span>
-        <span class="tag">Vite</span>
-        <span class="tag">Next.js</span>
-        <span class="tag">Web / Server Security</span>
-        <span class="tag">LLM API</span>
-      </div>
-      <p class="meta">운영 관점에서 배포 파이프라인과 서비스 안정성을 함께 개선하는 방향으로 확장 중.</p>
-    </section>
+    <div class="grid">
+      <section id="stack" class="card anchor">
+        <h2>🔨 Tech Stack</h2>
+        <div class="badges" aria-label="tech badges">
+          <span class="badge"><strong>Backend</strong> · Java / Spring Boot / JPA</span>
+          <span class="badge"><strong>DB</strong> · Oracle / MariaDB / MySQL</span>
+          <span class="badge"><strong>Infra</strong> · Docker / Compose</span>
+          <span class="badge"><strong>K8s</strong> · Kubernetes (k3s)</span>
+          <span class="badge"><strong>CI/CD</strong> · GitHub Actions</span>
+          <span class="badge"><strong>Frontend</strong> · React / TS / Vite / Next.js</span>
+          <span class="badge"><strong>Security</strong> · Web / Server / Network</span>
+          <span class="badge"><strong>AI</strong> · LLM API / 비용 최소화 / 요약·상태 컨텍스트</span>
+        </div>
+        <p>
+          운영 관점에서 <strong>배포 파이프라인</strong>과 <strong>서비스 안정성</strong>을 같이 챙기는 방향으로 스택을 확장 중입니다.
+        </p>
+      </section>
 
-    <section id="ops" class="section anchor">
-      <h2>Production & Operations</h2>
-      <ul>
-        <li>RHEL 기반 엔터프라이즈 프로덕션 환경에서 <strong>60,000+ users 규모 시스템 운용</strong> (2년차)</li>
-        <li>서비스 배포, 운영, 장애 대응 수행</li>
-        <li>서버 · 데이터베이스 · 네트워크(방화벽 등) 포함 운영 환경 전반 관리</li>
+      <section id="ops" class="card anchor">
+        <h2>🏭 Production & Operations Experience</h2>
+        <ul class="list">
+          <li><span class="dot"></span><span>RHEL 기반 엔터프라이즈 프로덕션 환경에서 <strong>60,000+ users 규모 시스템</strong> 운용 2년차</span></li>
+          <li><span class="dot"></span><span>서비스 배포, 운영, 장애 대응 수행</span></li>
+          <li><span class="dot"></span><span>서버 · 데이터베이스 · <strong>네트워크 단 설정(방화벽 등)</strong> 포함 운영 환경 전반 관리</span></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="grid">
+      <section id="lab" class="card anchor">
+        <h2>🧪 Personal Infrastructure & Kubernetes Lab</h2>
+        <ul class="list">
+          <li><span class="dot"></span><span>노트북 서버로 개인 Kubernetes 클러스터 구성 및 운영</span></li>
+          <li><span class="dot"></span><span>컨테이너 배포/서비스 구성/장애 상황을 직접 실험하며 운영 감각 축적</span></li>
+          <li><span class="dot"></span><span>레거시 운영 경험을 바탕으로 컨테이너 기반 환경으로 운영 역량 확장 중</span></li>
+        </ul>
+        <p style="margin-top:10px;">
+          목표는 “돌아가는 데모”가 아니라, <strong>운영 가능한 구조</strong>를 계속 개선하는 것입니다.
+        </p>
+      </section>
+
+      <section id="projects" class="card anchor">
+        <h2>🚀 Projects</h2>
+
+        <div class="projects">
+          <div class="project">
+            <div class="top">
+              <h3>Personal Blog</h3>
+              <a href="https://itmoon.site" target="_blank" rel="noopener noreferrer">itmoon.site ↗</a>
+            </div>
+            <p>개인 기술 블로그 운영. 미니 기능/실험 요소를 붙여 빠르게 확인·검증.</p>
+            <p><strong>AI 뉴스 기사 요약 기능</strong> 구현·운영 중. CI/CD 및 컨테이너 기반 배포 환경 구성.</p>
+          </div>
+
+          <div class="project">
+            <div class="top">
+              <h3>문열기 게임</h3>
+              <a href="#" onclick="return false;" aria-label="no link">toy project</a>
+            </div>
+            <p>예전부터 생각해오던 아이디어를 Docker Compose 연습 겸 가볍게 구현한 토이 미니게임.</p>
+          </div>
+
+          <div class="project">
+            <div class="top">
+              <h3>Song’s Pick</h3>
+              <a href="#" onclick="return false;" aria-label="no link">in progress</a>
+            </div>
+            <p>감성 기반 장소 추천 서비스. 프론트엔드/백엔드/데이터 구조 직접 설계.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section id="contact" class="card anchor" style="margin-top:14px;">
+      <h2>📫 Contact</h2>
+      <ul class="list">
+        <li><span class="dot"></span><span><strong>GitHub</strong>: <a href="https://github.com/moonjuhyun123" target="_blank" rel="noopener noreferrer">github.com/moonjuhyun123</a></span></li>
+        <li><span class="dot"></span><span><strong>Portfolio</strong>: <a href="https://moonjuhyun123.github.io" target="_blank" rel="noopener noreferrer">moonjuhyun123.github.io</a></span></li>
+        <li><span class="dot"></span><span><strong>Blog</strong>: <a href="https://itmoon.site" target="_blank" rel="noopener noreferrer">itmoon.site</a></span></li>
+        <li><span class="dot"></span><span><strong>Email</strong>: <a href="mailto:moonjuhyun7@ajou.ac.kr">moonjuhyun7@ajou.ac.kr</a></span></li>
       </ul>
-    </section>
-
-    <section id="lab" class="section anchor">
-      <h2>Personal Infrastructure & Kubernetes Lab</h2>
-      <ul>
-        <li>개인 환경에서 노트북 서버로 Kubernetes 클러스터 구축 및 운영</li>
-        <li>컨테이너 배포, 서비스 구성, 장애 상황을 직접 실험하며 운영 관점 경험 축적</li>
-        <li>레거시 운영 경험을 바탕으로 컨테이너 기반 환경으로 운영 역량 확장 중</li>
-      </ul>
-    </section>
-
-    <section id="projects" class="section anchor">
-      <h2>Projects</h2>
-
-      <div class="projects">
-        <article class="project">
-          <div class="project-top">
-            <h3>Personal Blog</h3>
-            <a href="https://itmoon.site" target="_blank" rel="noopener noreferrer">itmoon.site</a>
-          </div>
-          <p>개인 기술 블로그 운영. 미니 기능·실험 요소를 붙여 빠르게 확인·검증.</p>
-          <p>AI 뉴스 기사 요약 기능 구현·운영 중. CI/CD 및 컨테이너 기반 배포 환경 구성.</p>
-          <!-- 선택: 썸네일 넣고 싶으면 assets/blog.png 추가 -->
-          <!-- <img class="thumb" src="assets/blog.png" alt="Blog screenshot" /> -->
-        </article>
-
-        <article class="project">
-          <div class="project-top">
-            <h3>문열기 게임</h3>
-            <span class="small">Toy</span>
-          </div>
-          <p>Docker Compose 연습 겸 가볍게 구현한 토이 미니게임.</p>
-          <!-- <img class="thumb" src="assets/game.png" alt="Game screenshot" /> -->
-        </article>
-
-        <article class="project">
-          <div class="project-top">
-            <h3>Song’s Pick</h3>
-            <span class="small">Design / Build</span>
-          </div>
-          <p>감성 기반 장소 추천 서비스. 프론트엔드/백엔드/데이터 구조 직접 설계.</p>
-          <!-- <img class="thumb" src="assets/songs-pick.png" alt="Song’s Pick screenshot" /> -->
-        </article>
-      </div>
-    </section>
-
-    <section id="contact" class="section anchor">
-      <h2>Contact</h2>
-      <div class="contact">
-        <div><strong>GitHub</strong>: <a href="https://github.com/moonjuhyun123" target="_blank" rel="noopener noreferrer">github.com/moonjuhyun123</a></div>
-        <div><strong>Portfolio</strong>: <a href="https://moonjuhyun123.github.io" target="_blank" rel="noopener noreferrer">moonjuhyun123.github.io</a></div>
-        <div><strong>Blog</strong>: <a href="https://itmoon.site" target="_blank" rel="noopener noreferrer">itmoon.site</a></div>
-        <div><strong>Email</strong>: <a href="mailto:moonjuhyun7@ajou.ac.kr">moonjuhyun7@ajou.ac.kr</a></div>
-      </div>
     </section>
 
     <footer>
-      © <span id="y"></span> Juhyun Moon
+      © <span id="y"></span> Juhyun Moon · Built with plain HTML/CSS for GitHub Pages
     </footer>
   </div>
 
