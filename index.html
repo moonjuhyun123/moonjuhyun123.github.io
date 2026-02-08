@@ -3,453 +3,331 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Moon | Portfolio</title>
-  <meta name="description" content="Moon (Juhyun) — Security-oriented Backend Developer. Java/Spring, DB, Docker/Kubernetes, CI/CD." />
-  <meta name="theme-color" content="#0b0f14" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Juhyun Moon</title>
+  <meta name="description" content="Juhyun Moon — Backend Engineer (Design · Build · Deploy · Operate)" />
 
   <style>
     :root{
-      --bg:#0b0f14;
-      --card:#0f1620;
-      --text:#e6edf3;
-      --muted:#9aa4af;
-      --line:rgba(255,255,255,.08);
-      --accent:#7dd3fc;
-      --accent2:#a7f3d0;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius: 18px;
-      --max: 980px;
+      --bg: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --card: #ffffff;
+      --max: 920px;
+      --radius: 12px;
     }
-
-    @media (prefers-color-scheme: light){
+    @media (prefers-color-scheme: dark){
       :root{
-        --bg:#f6f8fa;
-        --card:#ffffff;
-        --text:#0b1220;
-        --muted:#5b6672;
-        --line:rgba(0,0,0,.08);
-        --shadow: 0 10px 30px rgba(0,0,0,.10);
+        --bg: #0b0f14;
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+        --line: #1f2937;
+        --card: #0b0f14;
       }
     }
 
     *{ box-sizing:border-box; }
-    html,body{ height:100%; }
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Apple SD Gothic Neo, Noto Sans KR, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background:
-        radial-gradient(1200px 800px at 10% -10%, rgba(125,211,252,.20), transparent 60%),
-        radial-gradient(900px 700px at 110% 10%, rgba(167,243,208,.18), transparent 55%),
-        var(--bg);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+                   "Apple SD Gothic Neo","Noto Sans KR", Arial, "Helvetica Neue", sans-serif;
+      background: var(--bg);
       color: var(--text);
-      line-height: 1.55;
+      line-height: 1.7;
     }
 
-    a{ color:inherit; text-decoration:none; }
-    a:hover{ text-decoration:underline; text-decoration-color:rgba(255,255,255,.3); }
-    @media (prefers-color-scheme: light){
-      a:hover{ text-decoration-color:rgba(0,0,0,.25); }
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 40px 18px 64px;
     }
 
-    .wrap{ max-width: var(--max); margin: 0 auto; padding: 28px 18px 70px; }
     header{
-      padding: 22px 0 10px;
       display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap: 16px;
+      gap: 18px;
+      align-items: center;
+      justify-content: space-between;
       flex-wrap: wrap;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--line);
     }
 
-    .brand{
+    .who{
       display:flex;
-      flex-direction:column;
-      gap: 8px;
+      gap: 14px;
+      align-items: center;
+      min-width: 260px;
     }
 
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 8px 12px;
+    .avatar{
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      object-fit: cover;
       border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255,255,255,.02);
-      backdrop-filter: blur(10px);
-      width: fit-content;
-      box-shadow: 0 1px 0 rgba(255,255,255,.04) inset;
-    }
-    @media (prefers-color-scheme: light){
-      .pill{ background: rgba(0,0,0,.02); box-shadow: 0 1px 0 rgba(0,0,0,.04) inset; }
+      background: #f3f4f6;
     }
 
-    .dot{
-      width:10px; height:10px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 0 4px rgba(125,211,252,.12);
-      flex:0 0 auto;
+    .name{
+      display:flex;
+      flex-direction: column;
+      gap: 2px;
     }
-
-    h1{
-      margin: 0;
-      font-size: clamp(28px, 3.2vw, 40px);
-      letter-spacing: -0.02em;
+    .name h1{
+      margin:0;
+      font-size: 22px;
+      letter-spacing: -0.2px;
     }
-
-    .subtitle{
-      margin: 0;
+    .name p{
+      margin:0;
       color: var(--muted);
-      max-width: 64ch;
+      font-size: 14px;
     }
 
     nav{
       display:flex;
-      gap: 10px;
-      align-items:center;
+      gap: 12px;
       flex-wrap: wrap;
-      justify-content:flex-end;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap: 10px;
-      padding: 10px 14px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.02);
-      cursor:pointer;
-      transition: transform .08s ease, background .2s ease;
-      user-select:none;
-    }
-    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.04); }
-    .btn.primary{
-      border-color: rgba(125,211,252,.35);
-      background: linear-gradient(135deg, rgba(125,211,252,.20), rgba(167,243,208,.14));
-    }
-    @media (prefers-color-scheme: light){
-      .btn{ background: rgba(0,0,0,.02); }
-      .btn:hover{ background: rgba(0,0,0,.04); }
-      .btn.primary{ background: linear-gradient(135deg, rgba(125,211,252,.18), rgba(167,243,208,.12)); }
-    }
-
-    main{ margin-top: 18px; }
-    .grid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 14px;
-    }
-    @media (max-width: 860px){
-      .grid{ grid-template-columns: 1fr; }
-    }
-
-    .card{
-      background: rgba(255,255,255,.02);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-    }
-    @media (prefers-color-scheme: light){
-      .card{ background: rgba(255,255,255,.9); }
-    }
-
-    .card h2{
-      margin: 0 0 10px;
-      font-size: 18px;
-      letter-spacing: -0.01em;
-    }
-
-    .list{
-      margin: 10px 0 0;
-      padding: 0;
-      list-style: none;
-      display:flex;
-      flex-direction:column;
-      gap: 10px;
-    }
-
-    .row{
-      display:flex;
-      gap: 10px;
-      align-items:flex-start;
-      padding: 10px 12px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: rgba(255,255,255,.02);
-    }
-    @media (prefers-color-scheme: light){
-      .row{ background: rgba(0,0,0,.02); }
-    }
-
-    .tagline{ color: var(--muted); margin: 8px 0 0; }
-
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.02);
-      white-space: nowrap;
-      font-size: 13px;
+      align-items: center;
       color: var(--muted);
+      font-size: 13px;
     }
-    @media (prefers-color-scheme: light){
-      .badge{ background: rgba(0,0,0,.02); }
+    nav a{ color: var(--muted); }
+    nav a:hover{ color: var(--text); text-decoration: underline; }
+
+    .section{
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .section:last-of-type{
+      border-bottom: none;
     }
 
-    .badges{
+    h2{
+      margin:0 0 10px;
+      font-size: 16px;
+      letter-spacing: -0.2px;
+    }
+
+    ul{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    li{ margin: 6px 0; }
+
+    .meta{
+      color: var(--muted);
+      font-size: 14px;
+      margin: 8px 0 0;
+    }
+
+    .stack{
       display:flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-top: 10px;
     }
-
-    .muted{ color: var(--muted); }
-    .k{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    .tag{
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 10px;
       font-size: 12px;
       color: var(--muted);
+      background: transparent;
     }
 
-    .footer{
-      margin-top: 16px;
-      padding: 16px 0 0;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
+    .projects{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .project{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px;
+      background: var(--card);
+    }
+    .project-top{
       display:flex;
-      align-items:center;
-      justify-content:space-between;
       gap: 10px;
+      align-items: baseline;
+      justify-content: space-between;
       flex-wrap: wrap;
     }
+    .project h3{
+      margin:0;
+      font-size: 14px;
+    }
+    .project a{
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .project p{
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
 
-    .sep{ opacity:.6; padding: 0 8px; }
-    .small{ font-size: 13px; }
-    .nowrap{ white-space: nowrap; }
-
-    .toast{
-      position: fixed;
-      left: 50%;
-      bottom: 18px;
-      transform: translateX(-50%);
-      background: rgba(15,22,32,.92);
+    .thumb{
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
       border: 1px solid var(--line);
-      color: var(--text);
-      padding: 10px 12px;
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-      display:none;
-      max-width: min(560px, calc(100% - 20px));
+      margin-top: 10px;
+      display:block;
     }
-    @media (prefers-color-scheme: light){
-      .toast{ background: rgba(255,255,255,.95); }
+
+    .contact{
+      display:grid;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--muted);
     }
+
+    footer{
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .anchor{ scroll-margin-top: 16px; }
+    .small{ font-size: 12px; color: var(--muted); }
   </style>
 </head>
 
 <body>
   <div class="wrap">
     <header>
-      <div class="brand">
-        <div class="pill">
-          <span class="dot" aria-hidden="true"></span>
-          <span class="k">moon / juhyun</span>
-        </div>
-
-        <h1>Moon (Juhyun)</h1>
-        <p class="subtitle">
-          Security-oriented backend developer. I design systems with an infra + security mindset:
-          <span class="nowrap">Java/Spring</span>, DB, Docker/Kubernetes, CI/CD.
-        </p>
-
-        <div class="badges" aria-label="Highlights">
-          <span class="badge">🔐 Secure Design</span>
-          <span class="badge">☕ Java · Spring Boot · JPA</span>
-          <span class="badge">🐳 Docker · k3s</span>
-          <span class="badge">⚙️ GitHub Actions</span>
-          <span class="badge">🧠 LLM API (cost-aware)</span>
+      <div class="who">
+        <!-- 프로필 이미지: repo/assets/profile.jpg -->
+        <img class="avatar" src="assets/profile.jpg" alt="Juhyun Moon" />
+        <div class="name">
+          <h1>Juhyun Moon</h1>
+          <p>Backend Engineer · 설계 → 구현 → 배포 → 운영</p>
         </div>
       </div>
 
-      <nav>
-        <a class="btn primary" href="https://github.com/moonjuhyun123" target="_blank" rel="noreferrer">GitHub</a>
-        <!-- 아래 2개는 네 링크로 바꿔 -->
-        <a class="btn" href="#" id="blogLink" target="_blank" rel="noreferrer">Blog</a>
-        <button class="btn" type="button" id="copyEmailBtn">Copy Email</button>
+      <nav aria-label="sections">
+        <a href="#about">About</a>
+        <a href="#stack">Tech</a>
+        <a href="#ops">Ops</a>
+        <a href="#lab">Lab</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
       </nav>
     </header>
 
-    <main class="grid">
-      <section class="card">
-        <h2>About</h2>
-        <p class="tagline">
-          “그냥 돌아가는 코드”보다 <b>왜 이렇게 설계했는지 설명 가능한 구조</b>를 선호합니다.
-          OS·Network·DB·Security 같은 기본기를 장기적으로 쌓는 스타일입니다.
-        </p>
+    <section id="about" class="section anchor">
+      <h2>About</h2>
+      <ul>
+        <li>백엔드 개발을 주력으로 하며, 프론트엔드를 포함한 서비스 구현과 운영을 경험함</li>
+        <li>Spring Boot, DB, Docker, Kubernetes 환경에서 <strong>설계 → 구현 → 배포 → 운영</strong> 전반을 다뤄봄</li>
+        <li><strong>6만 명 이상 사용자가 사용하는 시스템</strong>의 서비스 배포, 운영, 장애 대응 경험 보유</li>
+        <li>서버 및 <strong>네트워크 단 설정(방화벽 등)</strong> 포함, 운영 환경 이슈 점검 및 대응 경험</li>
+        <li>설계 의도를 설명할 수 있는 구조를 지향하며 OS/Network/DB 기본기를 중심으로 학습 중</li>
+      </ul>
+    </section>
 
-        <ul class="list" aria-label="About bullets">
-          <li class="row">
-            <span aria-hidden="true">🧱</span>
-            <div>
-              <div><b>Backend 중심</b>으로 설계·구현·배포까지 혼자 끝내는 경험을 쌓는 중</div>
-              <div class="muted small">Spring Boot / JPA / MariaDB·MySQL / API 설계</div>
-            </div>
-          </li>
-          <li class="row">
-            <span aria-hidden="true">🧰</span>
-            <div>
-              <div><b>Infra/DevOps</b>까지 같이 봄 (운영 관점 중요)</div>
-              <div class="muted small">Docker, Kubernetes(k3s), CI/CD, 장애 원인 분석/튜닝</div>
-            </div>
-          </li>
-          <li class="row">
-            <span aria-hidden="true">🧠</span>
-            <div>
-              <div><b>AI 시스템</b>은 “비용 최소화 + UX” 관점으로 접근</div>
-              <div class="muted small">요약·상태 기반 컨텍스트 관리 / Step-by-step UX</div>
-            </div>
-          </li>
-        </ul>
-      </section>
+    <section id="stack" class="section anchor">
+      <h2>Tech Stack</h2>
+      <div class="stack" role="list">
+        <span class="tag">Java</span>
+        <span class="tag">Spring Boot</span>
+        <span class="tag">JPA</span>
+        <span class="tag">Oracle</span>
+        <span class="tag">MariaDB / MySQL</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Docker Compose</span>
+        <span class="tag">Kubernetes (k3s)</span>
+        <span class="tag">GitHub Actions</span>
+        <span class="tag">React</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">Vite</span>
+        <span class="tag">Next.js</span>
+        <span class="tag">Web / Server Security</span>
+        <span class="tag">LLM API</span>
+      </div>
+      <p class="meta">운영 관점에서 배포 파이프라인과 서비스 안정성을 함께 개선하는 방향으로 확장 중.</p>
+    </section>
 
-      <aside class="card">
-        <h2>Now</h2>
-        <ul class="list" aria-label="Current focus">
-          <li class="row">
-            <span aria-hidden="true">🌱</span>
-            <div>
-              <div><b>Fundamentals</b></div>
-              <div class="muted small">OS / Network / DB 기반 보안 이해 강화</div>
-            </div>
-          </li>
-          <li class="row">
-            <span aria-hidden="true">🛠️</span>
-            <div>
-              <div><b>Shipping</b></div>
-              <div class="muted small">개인 서비스/블로그를 컨테이너 기반으로 배포·운영</div>
-            </div>
-          </li>
-          <li class="row">
-            <span aria-hidden="true">🎯</span>
-            <div>
-              <div><b>Direction</b></div>
-              <div class="muted small">Security consulting → industry expert → research/PhD track</div>
-            </div>
-          </li>
-        </ul>
+    <section id="ops" class="section anchor">
+      <h2>Production & Operations</h2>
+      <ul>
+        <li>RHEL 기반 엔터프라이즈 프로덕션 환경에서 <strong>60,000+ users 규모 시스템 운용</strong> (2년차)</li>
+        <li>서비스 배포, 운영, 장애 대응 수행</li>
+        <li>서버 · 데이터베이스 · 네트워크(방화벽 등) 포함 운영 환경 전반 관리</li>
+      </ul>
+    </section>
 
-        <div class="footer small">
-          <span>Last updated: <span id="lastUpdated" class="nowrap"></span></span>
-          <span class="k">v1.0</span>
-        </div>
-      </aside>
+    <section id="lab" class="section anchor">
+      <h2>Personal Infrastructure & Kubernetes Lab</h2>
+      <ul>
+        <li>개인 환경에서 노트북 서버로 Kubernetes 클러스터 구축 및 운영</li>
+        <li>컨테이너 배포, 서비스 구성, 장애 상황을 직접 실험하며 운영 관점 경험 축적</li>
+        <li>레거시 운영 경험을 바탕으로 컨테이너 기반 환경으로 운영 역량 확장 중</li>
+      </ul>
+    </section>
 
-      <section class="card" style="grid-column: 1 / -1;">
-        <h2>Projects</h2>
-        <ul class="list" aria-label="Projects">
-          <li class="row">
-            <span aria-hidden="true">📰</span>
-            <div style="width:100%;">
-              <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;">
-                <b>Personal Blog / Portfolio</b>
-                <span class="k">infra-first</span>
-              </div>
-              <div class="muted small">개발·보안·인프라 실험 기록 + CI/CD + 컨테이너 배포</div>
-              <div class="muted small">Tech: Spring Boot · MariaDB · Docker · k3s · GitHub Actions</div>
-            </div>
-          </li>
+    <section id="projects" class="section anchor">
+      <h2>Projects</h2>
 
-          <li class="row">
-            <span aria-hidden="true">🗺️</span>
-            <div style="width:100%;">
-              <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;">
-                <b>Song’s Pick</b>
-                <span class="k">product</span>
-              </div>
-              <div class="muted small">감성 기반 장소 추천 서비스 (설계/개발/운영 실험)</div>
-              <div class="muted small">Tech: React · API 설계 · 데이터 모델링</div>
-            </div>
-          </li>
-
-          <li class="row">
-            <span aria-hidden="true">🧩</span>
-            <div style="width:100%;">
-              <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;">
-                <b>Step-by-step AI Web Service (MVP)</b>
-                <span class="k">cost-aware UX</span>
-              </div>
-              <div class="muted small">AI가 “다음 한 단계만” 제시하는 UX + 요약/상태 기반 컨텍스트로 비용 최적화</div>
-              <div class="muted small">Tech: LLM API · state summary · guardrails</div>
-            </div>
-          </li>
-        </ul>
-
-        <div class="footer">
-          <div class="small">
-            <span class="muted">Links:</span>
-            <span class="sep">•</span>
-            <a href="https://github.com/moonjuhyun123" target="_blank" rel="noreferrer">GitHub</a>
-            <span class="sep">•</span>
-            <!-- 네 블로그 링크로 바꿔 -->
-            <a href="#" id="blogLink2" target="_blank" rel="noreferrer">Blog</a>
+      <div class="projects">
+        <article class="project">
+          <div class="project-top">
+            <h3>Personal Blog</h3>
+            <a href="https://itmoon.site" target="_blank" rel="noopener noreferrer">itmoon.site</a>
           </div>
-          <div class="small muted">© <span id="year"></span> Moon</div>
-        </div>
-      </section>
-    </main>
+          <p>개인 기술 블로그 운영. 미니 기능·실험 요소를 붙여 빠르게 확인·검증.</p>
+          <p>AI 뉴스 기사 요약 기능 구현·운영 중. CI/CD 및 컨테이너 기반 배포 환경 구성.</p>
+          <!-- 선택: 썸네일 넣고 싶으면 assets/blog.png 추가 -->
+          <!-- <img class="thumb" src="assets/blog.png" alt="Blog screenshot" /> -->
+        </article>
+
+        <article class="project">
+          <div class="project-top">
+            <h3>문열기 게임</h3>
+            <span class="small">Toy</span>
+          </div>
+          <p>Docker Compose 연습 겸 가볍게 구현한 토이 미니게임.</p>
+          <!-- <img class="thumb" src="assets/game.png" alt="Game screenshot" /> -->
+        </article>
+
+        <article class="project">
+          <div class="project-top">
+            <h3>Song’s Pick</h3>
+            <span class="small">Design / Build</span>
+          </div>
+          <p>감성 기반 장소 추천 서비스. 프론트엔드/백엔드/데이터 구조 직접 설계.</p>
+          <!-- <img class="thumb" src="assets/songs-pick.png" alt="Song’s Pick screenshot" /> -->
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="section anchor">
+      <h2>Contact</h2>
+      <div class="contact">
+        <div><strong>GitHub</strong>: <a href="https://github.com/moonjuhyun123" target="_blank" rel="noopener noreferrer">github.com/moonjuhyun123</a></div>
+        <div><strong>Portfolio</strong>: <a href="https://moonjuhyun123.github.io" target="_blank" rel="noopener noreferrer">moonjuhyun123.github.io</a></div>
+        <div><strong>Blog</strong>: <a href="https://itmoon.site" target="_blank" rel="noopener noreferrer">itmoon.site</a></div>
+        <div><strong>Email</strong>: <a href="mailto:moonjuhyun7@ajou.ac.kr">moonjuhyun7@ajou.ac.kr</a></div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="y"></span> Juhyun Moon
+    </footer>
   </div>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
   <script>
-    // ====== 여기만 네 정보로 바꿔 ======
-    const PROFILE = {
-      email: "your-email@example.com",           // TODO: 네 이메일로 교체
-      blogUrl: "https://example.com",            // TODO: 네 블로그(없으면 깃허브/노션 링크)
-    };
-    // ==================================
-
-    // Blog links
-    const blogLink = document.getElementById("blogLink");
-    const blogLink2 = document.getElementById("blogLink2");
-    if (PROFILE.blogUrl && PROFILE.blogUrl !== "https://example.com") {
-      blogLink.href = PROFILE.blogUrl;
-      blogLink2.href = PROFILE.blogUrl;
-    } else {
-      // 블로그 없으면 버튼 숨김
-      blogLink.style.display = "none";
-      blogLink2.style.display = "none";
-    }
-
-    // Footer dates
-    const now = new Date();
-    document.getElementById("year").textContent = String(now.getFullYear());
-    document.getElementById("lastUpdated").textContent = now.toISOString().slice(0,10);
-
-    // Toast helper
-    const toastEl = document.getElementById("toast");
-    let toastTimer = null;
-    function toast(msg){
-      toastEl.textContent = msg;
-      toastEl.style.display = "block";
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => { toastEl.style.display = "none"; }, 2200);
-    }
-
-    // Copy email
-    document.getElementById("copyEmailBtn").addEventListener("click", async () => {
-      try{
-        await navigator.clipboard.writeText(PROFILE.email);
-        toast("Email copied.");
-      } catch(e){
-        toast("Copy failed. Select & copy manually.");
-      }
-    });
+    document.getElementById("y").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
